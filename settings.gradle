@@ -16,5 +16,5 @@ include 'services:webservice'
 */
 
 rootProject.name = 'spring-reactive-example'
-include 'spring5test'
-include 'spring5test-client'
+include 'service'
+include 'client'

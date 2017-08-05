@@ -1,4 +1,4 @@
-package org.springtest.spring5testclient;
+package org.springtest.client;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springtest.spring5testclient.users.User;
+import org.springtest.client.users.User;
 
 @SpringBootApplication
-public class  Spring5testClientApplication {
+public class  ClientApplication {
 
 	@Bean
 	WebClient webClient() {
@@ -36,6 +36,6 @@ public class  Spring5testClientApplication {
 		};
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(Spring5testClientApplication.class, args);
+		SpringApplication.run(ClientApplication.class, args);
 	}
 }

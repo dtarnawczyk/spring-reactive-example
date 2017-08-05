@@ -1,4 +1,4 @@
-package org.springtest.spring5testclient.users;
+package org.springtest.client.users;
 
 import lombok.Data;
 
