@@ -13,11 +13,18 @@ public class UsersService {
 
     private final UsersRepository repository;
 
-    public Mono<User> findByName(String name) {
+    public Mono<User> findByName(final String name) {
         return repository.findById(name);
     }
 
     public Flux<User> findAll() {
         return repository.findAll();
+    }
+
+    public Mono<String> addUser(final Mono<User> userMono) {
+        Mono<String> out = userMono
+                .flatMap(repository::save)
+                .map(User::getName);
+        return out;
     }
 }

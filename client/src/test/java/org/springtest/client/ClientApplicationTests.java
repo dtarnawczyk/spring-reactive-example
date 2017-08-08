@@ -1,10 +1,11 @@
 package org.springtest.client;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -16,8 +17,9 @@ import reactor.core.publisher.Mono;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
-@RunWith(SpringRunner.class)
+@SpringJUnitWebConfig
 @SpringBootTest
+@DisplayName("Client Test")
 public class ClientApplicationTests {
 
 	private String serviceUri = "/usrs/Jerry";
@@ -28,7 +30,7 @@ public class ClientApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Before
+	@BeforeEach
 	public void prepareService() {
 		RouterFunction function = RouterFunctions.route(
 				RequestPredicates.GET(serviceUri).and(accept(APPLICATION_JSON_UTF8)),

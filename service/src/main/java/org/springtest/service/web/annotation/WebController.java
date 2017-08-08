@@ -1,9 +1,8 @@
 package org.springtest.service.web.annotation;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springtest.service.service.UsersService;
 import org.springtest.service.users.User;
 import reactor.core.publisher.Flux;
@@ -11,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @AllArgsConstructor
-class WebController {
+public class WebController {
 
     private final UsersService service;
 
@@ -25,4 +24,9 @@ class WebController {
         return this.service.findAll();
     }
 
+    @PostMapping("/users")
+    @ResponseStatus(HttpStatus.CREATED)
+    Mono<String> createUser(@RequestBody Mono<User> newUser) {
+        return this.service.addUser(newUser);
+    }
 }
