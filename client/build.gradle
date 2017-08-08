@@ -31,4 +31,9 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('io.projectreactor:reactor-test')
+
+	testCompile("org.junit.platform:junit-platform-runner:1.0.0-M6")
+
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M6")
+	testRuntime("org.junit.vintage:junit-vintage-engine:4.12.0-M6")
 }
