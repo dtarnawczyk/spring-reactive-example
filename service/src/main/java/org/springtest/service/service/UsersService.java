@@ -22,9 +22,8 @@ public class UsersService {
     }
 
     public Mono<String> addUser(final Mono<User> userMono) {
-        Mono<String> out = userMono
+        return userMono
                 .flatMap(repository::save)
                 .map(User::getName);
-        return out;
     }
 }
