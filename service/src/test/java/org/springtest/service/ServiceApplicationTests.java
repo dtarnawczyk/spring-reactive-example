@@ -36,7 +36,7 @@ public class ServiceApplicationTests {
 
 	@ParameterizedTest(name = "test no.{index} with [{arguments}] type web")
 	@EnumSource(value = DefType.class)
-	@DisplayName("When asking for all users should return the list of users")
+	@DisplayName("When asking for all users then should return the list of users")
 	public void whenAksForAllUsers_thenReturnList(DefType definitionType) throws Exception {
 		if(definitionType == DefType.ANNOTATION)
 			client = WebTestClient.bindToController(controller).build();
@@ -59,7 +59,7 @@ public class ServiceApplicationTests {
 
 	@ParameterizedTest(name = "test no.{index} with [{arguments}] type web")
 	@EnumSource(value = DefType.class)
-	@DisplayName("When asking for Tom should return one user data")
+	@DisplayName("When asking for Tom then should return one user")
 	public void whenAskForTom_thenReturnOne(DefType definitionType) throws Exception {
 		if(definitionType == DefType.ANNOTATION)
 			client = WebTestClient.bindToController(controller).build();

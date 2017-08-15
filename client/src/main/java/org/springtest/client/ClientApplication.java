@@ -16,7 +16,7 @@ public class  ClientApplication {
 	@Bean
 	WebClient webClient() {
 		return WebClient.builder()
-				.baseUrl("http://localhost:8080/usrs")
+				.baseUrl("http://localhost:8080")
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 				.filter(ExchangeFilterFunctions.basicAuthentication("user", "password"))
 				.build();
@@ -25,11 +25,11 @@ public class  ClientApplication {
 	@Bean
 	CommandLineRunner clientRun(WebClient webClient) {
 		return args -> {
-			webClient.get().uri("")
+			webClient.get().uri("/usrs")
 					.retrieve()
 					.bodyToFlux(User.class)
 					.filter(user -> user.getName().equalsIgnoreCase("Tom"))
-					.flatMap(user -> webClient.get().uri("/{name}", user.getName())
+					.flatMap(user -> webClient.get().uri("/usrs/{name}", user.getName())
 								.retrieve()
 								.bodyToFlux(User.class))
 					.subscribe(System.out::println);

@@ -13,7 +13,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.*;
 
 @Component
 @AllArgsConstructor
-public class UserHandler {
+class UserHandler {
 
     private final UsersService service;
 
@@ -28,7 +28,7 @@ public class UserHandler {
         return ok().body(fromPublisher(service.findAll(), User.class));
     }
 
-    public Mono<ServerResponse> createUser(ServerRequest request) {
+    Mono<ServerResponse> createUser(ServerRequest request) {
         return request.bodyToMono(User.class)
                 .flatMap(user -> service.addUser(Mono.just(user)))
                 .flatMap(createdUserName ->
